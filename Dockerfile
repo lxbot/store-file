@@ -10,9 +10,9 @@ ADD ./go.* /go/src/$GOLANG_NAMESPACE/
 ENV GO111MODULE=on
 RUN go mod download
 ADD . /go/src/$GOLANG_NAMESPACE/
-RUN make build
+RUN go build .
 RUN mkdir -p /lxbot/stores
-RUN mv /go/src/$GOLANG_NAMESPACE/store-file.so /lxbot/stores/
+RUN mv /go/src/$GOLANG_NAMESPACE/store-file /lxbot/stores/
 
 # ====================================================================================
 

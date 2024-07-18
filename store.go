@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"os"
 	"sync"
+	"time"
 
 	"github.com/lxbot/lxlib/v2"
 	"github.com/lxbot/lxlib/v2/common"
@@ -25,6 +26,8 @@ func main() {
 			onGet(event, store)
 		case event := <-*setCh:
 			onSet(event)
+		default:
+			time.Sleep(time.Millisecond)
 		}
 	}
 }

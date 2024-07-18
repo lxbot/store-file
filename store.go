@@ -73,7 +73,9 @@ func onSet(event *lxtypes.StoreEvent) {
 
 	b, err := json.Marshal(m)
 	if err != nil {
-		common.DebugLog(err)
+		common.ErrorLog(err)
 	}
-	_ = os.WriteFile(filePath, b, 0600)
+	if err := os.WriteFile(filePath, b, 0600); err != nil {
+		common.ErrorLog(err)
+	}
 }
